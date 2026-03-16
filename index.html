@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Portal de Informática</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				background: #f4f4f4;
+			}
+			header {
+				background: #2c3e50;
+				color: white;
+				padding: 20px;
+				text-align: center;
+			}
+			nav {
+				background: #34495e;
+				padding: 10px;
+				text-align: center;
+			}
+			nav a {
+				color: white;
+				margin: 10px;
+				text-decoration: none;
+				font-weight: bold;
+				cursor: pointer;
+			}
+			nav a:hover {
+				text-decoration: underline;
+			}
+			section {
+				padding: 20px;
+				margin: 20px;
+				background: white;
+				border-radius: 8px;
+			}
+			footer {
+				background: #2c3e50;
+				color: white;
+				text-align: center;
+				padding: 10px;
+				margin-top: 20px;
+			}
+			.tutorial-instrucciones {
+				display: none;
+				padding: 10px;
+				background: #ecf0f1;
+				border-left: 4px solid #3498db;
+				margin-top: 10px;
+				border-radius: 5px;
+			}
+			button {
+				margin-top: 5px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Portal de Informática del Colegio</h1>
+			<p>Recursos y ayuda tecnológica</p>
+		</header>
+
+		<nav>
+			<a onclick="mostrarSeccion('normas')">Normas del Aula</a>
+			<a onclick="mostrarSeccion('programas')">Programas</a>
+			<a onclick="mostrarSeccion('tutoriales')">Tutoriales</a>
+			<a onclick="mostrarSeccion('soporte')">Soporte</a>
+		</nav>
+
+		<section id="normas">
+			<h2>Normas del Aula</h2>
+			<ul>
+				<li>No cambiar la configuración de los ordenadores.</li>
+				<li>No instalar programas sin permiso.</li>
+				<li>Respetar el material del aula.</li>
+				<li>Cerrar sesión al terminar.</li>
+			</ul>
+		</section>
+
+		<section id="programas" style="display: none">
+			<h2>Programas que usamos</h2>
+			<ul>
+				<li>Navegador web</li>
+				<li>Procesador de textos</li>
+				<li>Editor de presentaciones</li>
+				<li>Programas educativos</li>
+			</ul>
+		</section>
+
+		<section id="tutoriales" style="display: none">
+			<h2>Tutoriales básicos</h2>
+
+			<button onclick="mostrarTutorial('crearCarpeta')">Crear carpetas</button>
+			<div id="crearCarpeta" class="tutorial-instrucciones">
+				<ol>
+					<li>Haz clic derecho en el escritorio o dentro de una carpeta.</li>
+					<li>Selecciona "Nuevo" → "Carpeta".</li>
+					<li>Escribe el nombre de la carpeta y pulsa Enter.</li>
+				</ol>
+			</div>
+
+			<button onclick="mostrarTutorial('guardarArchivos')">Guardar archivos</button>
+			<div id="guardarArchivos" class="tutorial-instrucciones">
+				<ol>
+					<li>Abre el programa en el que estás trabajando.</li>
+					<li>Haz clic en "Archivo" → "Guardar como".</li>
+					<li>Elige la carpeta donde quieres guardar.</li>
+					<li>Escribe un nombre y pulsa "Guardar".</li>
+				</ol>
+			</div>
+
+			<button onclick="mostrarTutorial('usarCorreo')">Usar correo electrónico</button>
+			<div id="usarCorreo" class="tutorial-instrucciones">
+				<ol>
+					<li>Abre tu navegador y entra en el correo (por ejemplo Gmail).</li>
+					<li>Inicia sesión con tu usuario y contraseña.</li>
+					<li>Haz clic en "Redactar" para enviar un nuevo correo.</li>
+					<li>Escribe destinatario, asunto y mensaje, luego pulsa "Enviar".</li>
+				</ol>
+			</div>
+
+			<button onclick="mostrarTutorial('subirNube')">Subir trabajos a la nube</button>
+			<div id="subirNube" class="tutorial-instrucciones">
+				<ol>
+					<li>Abre tu navegador y entra en Google Drive o similar.</li>
+					<li>Inicia sesión con tu usuario.</li>
+					<li>Haz clic en "Nuevo" → "Subir archivo" o "Subir carpeta".</li>
+					<li>Selecciona el archivo/carpeta y espera a que se suba.</li>
+				</ol>
+			</div>
+		</section>
+
+		<section id="soporte" style="display: none">
+			<h2>Soporte técnico</h2>
+			<p>Si tienes un problema con un ordenador del aula, avisa al profesor o al técnico.</p>
+		</section>
+
+		<footer>
+			<p>Portal creado por alumno en prácticas de SMR</p>
+		</footer>
+
+		<script>
+			function mostrarSeccion(id) {
+				// Oculta todas las secciones
+				const secciones = document.querySelectorAll('section');
+				secciones.forEach(sec => (sec.style.display = 'none'));
+				// Muestra la sección seleccionada
+				document.getElementById(id).style.display = 'block';
+
+				// Oculta todos los tutoriales cuando cambias de sección
+				const tutoriales = document.querySelectorAll('.tutorial-instrucciones');
+				tutoriales.forEach(t => (t.style.display = 'none'));
+			}
+
+			function mostrarTutorial(id) {
+				const tutorial = document.getElementById(id);
+				// Alterna mostrar/ocultar
+				if (tutorial.style.display === 'block') {
+					tutorial.style.display = 'none';
+				} else {
+					// Oculta todos primero
+					const tutoriales = document.querySelectorAll('.tutorial-instrucciones');
+					tutoriales.forEach(t => (t.style.display = 'none'));
+					tutorial.style.display = 'block';
+				}
+			}
+		</script>
+	</body>
+</html>
